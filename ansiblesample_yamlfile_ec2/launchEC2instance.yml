@@ -1,0 +1,19 @@
+- name: ec2 launcher
+  hosts: localhost
+  connection: local
+  tasks:
+  - pip:
+        name: boto
+  - name: lauching ec2
+    ec2:
+     key_name: ansibleautomation
+     region: us-east-1
+     instance_type: t2.micro
+     image: ami-006219aba10688d0b
+     wait: yes
+     group: default
+     count: 2
+     instance_tags:
+       Name: AnsibelServers
+     vpc_subnet_id: subnet-9f318af8
+     assign_public_ip: yes

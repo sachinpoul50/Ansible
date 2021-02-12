@@ -1,0 +1,14 @@
+- name: Stop EC2 Instance
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+  - pip:
+        name: boto
+  - name: Stop EC2 Instance - ViaAnsible
+    ec2:
+      instance_tags:
+        Name: AnsibelServers
+      region: 'us-east-1'
+      state: absent
+      wait: True

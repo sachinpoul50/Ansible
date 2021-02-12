@@ -1,0 +1,13 @@
+- name: Start EC2 Instance
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+    - pip:
+        name: boto
+    - name: Start EC2 Instance - ViaAnsible
+      ec2:
+        instance_ids: 'i-022c2b49ec94916e8'
+        region: 'us-east-1'
+        state: running
+        wait: True
